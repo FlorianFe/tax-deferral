@@ -12,8 +12,8 @@ import Slider from '@mui/material/Slider';
 
 export default function Home() {
   const [years, setYears] : any = useState(30);
-  const [interestRate, setInterestRate] : any = useState(5);
-  const [taxRate, setTaxRate] : any = useState(25);
+  const [interestRate, setInterestRate] : any = useState(7);
+  const [taxRate, setTaxRate] : any = useState(26);
   const [inflationRate, setInflationRate] : any = useState(2);
 
   return (
