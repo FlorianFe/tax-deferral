@@ -4,7 +4,7 @@ import React from "react"
 import {range, zip, last} from "ramda"
 
 
-export default function Diagram({interestRate, years, taxRate = 0.25, inflationRate = 0.0} : any) {
+export default function Diagram({startCapital = 10000, interestRate, years, taxRate = 0.25, inflationRate = 0.0} : any) {
 
     const calc1 = (arr : Array<number>) => 
     {
@@ -43,9 +43,14 @@ export default function Diagram({interestRate, years, taxRate = 0.25, inflationR
     const y2Values = xValues.map((x : number) => calc2(range(0, x)));
     const y3Values = xValues.map((x : number) => calc3(range(0, x)));
 
-    const moneySaving : number = (last(zip(y1Values, y2Values).map((v : any) => (v[0] - 1) / (v[1] - 1))) as number) - 1 ;
+    const relativeMoneySaving : number = (last(zip(y1Values, y2Values).map((v : any) => (v[0] - 1) / (v[1] - 1))) as number) - 1 ;
+    const absoluteMoneySaving : number = (last(zip(y1Values
+        .map(v => v * startCapital), y2Values.map(v => v * startCapital))
+        .map((v : any) => v[0] - v[1])
+    ) as number);
 
-    console.log(zip(y1Values, y2Values))
+    const absoluteMoneyY1 = (last(y1Values) as number) * startCapital;
+    const absoluteMoneyY2 = (last(y2Values) as number) * startCapital;
 
     const yMax = Math.max(...y3Values)
 
@@ -76,8 +81,9 @@ export default function Diagram({interestRate, years, taxRate = 0.25, inflationR
 
             </svg>
 
-            Durch Steuerstundung hast du nach {years} Jahren <b>{(moneySaving * 100).toFixed(2)}%</b> mehr hinzugewonnen 
-            als wenn du jedes Jahr deine Gewinne realisiert hättest!
+            Ohne Steuerstundung hättest du nach {years} Jahren <b>${absoluteMoneyY2.toFixed(2)}€</b> und mit Steuerstundung <b>${absoluteMoneyY1.toFixed(2)}€</b>.
+            Du hast also <b>{absoluteMoneySaving.toFixed(2)}€ {relativeMoneySaving > 0 && `(+ ${(relativeMoneySaving * 100).toFixed(2)}%)` }</b> mehr hinzugewonnen 
+            als wenn du jedes Jahr deine Gewinne realisiert hättest
         </div>
     )
   }
