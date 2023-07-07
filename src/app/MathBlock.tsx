@@ -24,10 +24,11 @@ export default function MathBlock({latex } : Props) {
 
         const listener = () => {
             //containerRef.current.style.width = "inherit";
-
             
-            const width = containerRef.current.clientWidth;
-            containerRef.current.style.width = `${width}px`
+            const element : any = containerRef.current;
+            const width = element?.clientWidth;
+
+            element.style.width = `${width}px`
             
             //console.log(width);
         };  
