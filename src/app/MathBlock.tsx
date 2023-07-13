@@ -28,7 +28,7 @@ export default function MathBlock({latex } : Props) {
             const element : any = containerRef.current;
             const width = element?.clientWidth;
 
-            element.style.width = `${width}px`
+            // element.style.width = `${width}px`
             
             //console.log(width);
         };  
@@ -43,13 +43,15 @@ export default function MathBlock({latex } : Props) {
         
     }, []);
 
+
     return (
-        <div ref={containerRef} style={{ overflow: "auto"}}>
-            <MathJax hideUntilTypeset='every'>
-            {latex}
+        <div ref={containerRef} style={{  maxWidth: "calc(100vw - 100px)" }}>
+            <MathJax inline dynamic>
+                {latex}
             </MathJax>
         </div>
     )
+    
 }
 
 

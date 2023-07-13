@@ -23,8 +23,7 @@ export default function TaxDefferalDemo() {
     <div>
         
         <div style={{ 
-            backgroundColor: "#fff", 
-            width: "300px", 
+            backgroundColor: "#fff",
             padding: "25px", 
             margin: "25px",
             borderRadius: "15px",
@@ -32,36 +31,44 @@ export default function TaxDefferalDemo() {
         }}>
         
             <TextField 
-            type="number"
-            label="Anfangskapital" 
-            variant="standard" 
-            value={startCapital}
-            onChange={(e) => { 
-                if(startCapital != e.target.value)
-                {
-                    setStartCapital(e.target.value)
-                }
-            }} 
+              type="number"
+              label="Anfangskapital" 
+              variant="standard" 
+              value={startCapital}
+              onChange={(e) => { 
+                  if(startCapital != e.target.value)
+                  {
+                      setStartCapital(e.target.value)
+                  }
+              }} 
             />
             
             <br/><br/>
 
-            Anlagejahre: {years}
-            <Slider aria-label="Volume" min={1} max={50} value={years} onChange={(event: Event, nextValue: number | number[]) => { 
-            setYears(nextValue as number);
-            }} />
-            Rendite: {interestRate}% 
-            <Slider aria-label="Volume" min={0} max={15} value={interestRate} onChange={(event: Event, nextValue: number | number[]) => { 
-            setInterestRate(nextValue as number);
-            }} />
-            Kapitalertragsteuern: {taxRate}% 
-            <Slider aria-label="Volume" min={0} max={100} value={taxRate} onChange={(event: Event, nextValue: number | number[]) => { 
-            setTaxRate(nextValue as number);
-            }} />
-            Inflationsbereinigung: {inflationRate}% 
-            <Slider aria-label="Volume" min={0} max={10} value={inflationRate} onChange={(event: Event, nextValue: number | number[]) => { 
-            setInflationRate(nextValue as number);
-            }} />
+            <div style={{ display: "flex", gap: "25px", flexWrap: "wrap"}}>
+
+              <div style={{ flex: 1, minWidth: "200px"}}>
+                Anlagejahre: {years}
+                <Slider aria-label="Volume" min={1} max={50} value={years} onChange={(event: Event, nextValue: number | number[]) => { 
+                setYears(nextValue as number);
+                }} />
+                Rendite: {interestRate}% 
+                <Slider aria-label="Volume" min={0} max={15} value={interestRate} onChange={(event: Event, nextValue: number | number[]) => { 
+                setInterestRate(nextValue as number);
+                }} />
+              </div>
+              <div style={{ flex: 1, minWidth: "200px"}}>
+                Kapitalertragsteuern: {taxRate}% 
+                <Slider aria-label="Volume" min={0} max={100} value={taxRate} onChange={(event: Event, nextValue: number | number[]) => { 
+                setTaxRate(nextValue as number);
+                }} />
+                Inflationsbereinigung: {inflationRate}% 
+                <Slider aria-label="Volume" min={0} max={10} value={inflationRate} onChange={(event: Event, nextValue: number | number[]) => { 
+                setInflationRate(nextValue as number);
+                }} />
+              </div>
+
+            </div>
         
         
       </div>
