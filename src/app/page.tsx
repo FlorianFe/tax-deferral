@@ -28,7 +28,7 @@ export default function Home() {
           <CardMedia
               component="img"
               height="194"
-              image={`/pocket-watch.jpeg`}
+              image={`./pocket-watch.jpeg`}
               alt="Paella dish"
             />
             <CardContent style={{padding: "25px"}}>
