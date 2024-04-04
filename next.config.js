@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  basePath: "/tax-defferal",
+  basePath: "/tax-deferral",
   output: "export",
   reactStrictMode: true,
 };
